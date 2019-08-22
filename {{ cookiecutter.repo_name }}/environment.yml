@@ -5,6 +5,7 @@ dependencies:
   - pip
   - pip:
     - -e .
+    - flake8-isort==2.7.0
   - setuptools
   - wheel
   - click
