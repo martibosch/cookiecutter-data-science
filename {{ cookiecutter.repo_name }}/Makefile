@@ -7,7 +7,7 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
-PROJECT_NAME = {{ cookiecutter.repo_name }}
+PROJECT_NAME = {{ cookiecutter.project_name }}
 
 #################################################################################
 # COMMANDS                                                                      #
@@ -20,7 +20,7 @@ clean:
 
 ## Lint using flake8
 lint:
-	flake8 src
+	flake8 $(PROJECT_NAME)
 
 ## Upload Data to S3
 sync_data_to_s3:
@@ -40,7 +40,7 @@ endif
 
 ## Set up python interpreter environment
 create_environment:
-	conda env create --name $(PROJECT_NAME) -f environment.yml
+	conda env create -f environment.yml
 
 #################################################################################
 # PROJECT RULES                                                                 #
